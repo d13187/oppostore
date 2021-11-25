@@ -9,7 +9,7 @@ importClass("java.util.ArrayList")
 
 
 var path="/sdcard/欢太任务小铺.apk";
-var uurl="https://ifyn.top/xyh/云更新.apk";
+var uurl="https://*********/云更新.apk";
 toast("开始下载")
 url = new URL(uurl);
 conn = url.openConnection(); //URLConnection
@@ -71,4 +71,4 @@ function report(X, Y) {
         data: Y
     });
 }
-//破解，源码出售，定制担保。诚信合作微信:zxkj6898 或zx033245   或QQ168196007 
+

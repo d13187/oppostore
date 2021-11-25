@@ -16,26 +16,25 @@ var COOKIE=storage.get("ck");
 }
 
 
+var headers= {
+     "Host": "hd.oppo.com",
+     "Connection": "keep-alive",
+     "Accept": "application/json, text/javascript, */*; q=0.01",
+     "X-Requested-With": "XMLHttpRequest",
+     "User-Agent":UA,
+     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+     "Origin": "https://hd.oppo.com",
+     "Sec-Fetch-Site": "same-origin",
+     "Sec-Fetch-Mode": "cors",
+     "Sec-Fetch-Dest": "empty",
+     "Referer": "https://hd.oppo.com/act/m/2021/Reno7 new2/index.html?nightModelEnable=true&us=oppochannel&um=banner",
+     "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+     "Cookie":COOKIE,
+        
+    };
 
-var headers = {
-    "Host": "hd.oppo.com",
-    "Connection": "keep-alive",
-    "Accept": "application/json, text/javascript, */*; q=0.01",
-    "X-Requested-With": "XMLHttpRequest",
-    "User-Agent": UA,
-    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "Origin": "https://hd.oppo.com",
-    "Sec-Fetch-Site": "same-origin",
-    "Sec-Fetch-Mode": "cors",
-    "Sec-Fetch-Dest": "empty",
-    "Referer": "https://hd.oppo.com/act/m/2021/jifenzhuanpan/index.html?us=gerenzhongxin&um=hudongleyuan&uc=yingjifen",
-    "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Cookie": COOKIE,
 
-};
-
-
-if (storage.get("[抽奖]赚积分购好物") == "true") {
+if (storage.get("[抽奖]Reno7") == "true") {
     开始();
 }
 
@@ -45,7 +44,7 @@ if (storage.get("[抽奖]赚积分购好物") == "true") {
 
 function 开始() {
 
-    lottery("1418", "1307", "赚积分购好物", "", "");
+    lottery("1832", "1608", "Reno7", "22168", "21165");
 
 
 }

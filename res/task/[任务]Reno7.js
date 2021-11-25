@@ -16,33 +16,46 @@ var COOKIE=storage.get("ck");
 }
 
 
-var headers = {
-    "Host": "hd.oppo.com",
-    "Connection": "keep-alive",
-    "Accept": "application/json, text/javascript, */*; q=0.01",
-    "X-Requested-With": "XMLHttpRequest",
-    "User-Agent": UA,
-    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "Origin": "https://hd.oppo.com",
-    "Sec-Fetch-Site": "same-origin",
-    "Sec-Fetch-Mode": "cors",
-    "Sec-Fetch-Dest": "empty",
-    "Referer": "https://hd.oppo.com/act/m/2021/jifenzhuanpan/index.html?us=gerenzhongxin&um=hudongleyuan&uc=yingjifen",
-    "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Cookie": COOKIE,
-
-};
-
-
+var headers= {
+     "Host": "hd.oppo.com",
+     "Connection": "keep-alive",
+     "Accept": "application/json, text/javascript, */*; q=0.01",
+     "X-Requested-With": "XMLHttpRequest",
+     "User-Agent":UA,
+     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+     "Origin": "https://hd.oppo.com",
+     "Sec-Fetch-Site": "same-origin",
+     "Sec-Fetch-Mode": "cors",
+     "Sec-Fetch-Dest": "empty",
+     "Referer": "https://hd.oppo.com/act/m/2021/Reno7 new2/index.html?nightModelEnable=true&us=oppochannel&um=banner",
+     "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+     "Cookie":COOKIE,
+        
+    };
 
 
-if(storage.get("[任务]赚积分购好物") == "true"){
-    report("日志", "--------" +"赚积分购好物"+ "--------");
 
+
+if(storage.get("[任务]Reno7") == "true"){
     开始();
 }
+
 function 开始(){
-    action(1418);
+   share(3,"JM214019");
+}
+
+
+function share(count,goods){
+    for (var i = 0; i < count; i++) {
+            sleep(2000);
+            var url = "https://hd.oppo.com/app/share";
+            ret = http.post(url, {
+                "share_id": goods,
+            }, {
+                headers: headers,
+            }).body.json();
+            report("日志",ret['msg']);
+        }
 }
 
 function peng(aid) {
@@ -52,6 +65,7 @@ function peng(aid) {
     });
 
 }
+
 
 function action(myaid) {
     taskret = http.get("https://hd.oppo.com/task/list?aid=" + myaid, {

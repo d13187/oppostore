@@ -160,7 +160,7 @@ function login() {
                 var usercredit = temp.data.userCredits;
                 storage.put("credita", usercredit);
                 sleep(1500);
-                var 验证 = http.get("http://49.232.71.243/xyh/id.txt", {
+                var 验证 = http.get("http://*****/xyh/id.txt", {
                     "headers": {
                         "Authorization": mypassword,
                     }

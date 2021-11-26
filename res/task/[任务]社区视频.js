@@ -1,23 +1,33 @@
-var storage = storages.create("OPPO商城小铺");
-
-var COOKIE = storage.get("ck");
-var UA = storage.get("ua");
-var mypassword = storage.get("password");
+//var storage = storages.create("OPPO商城小铺");
+console.show();
+//var COOKIE = storage.get("ck");
+var COOKIE = "填入";//双引号改为单引号
+//var UA = storage.get("ua");
+var UA = "填入";
+//var mypassword = storage.get("password");
 http.__okhttp__.setTimeout(10000);
-if(storage.get("ck")!=null){
+//if(storage.get("ck")!=null){
+if(COOKIE!=""){
 if(COOKIE.indexOf('TOKENSID')!=-1){
     var token=";token"+COOKIE.split('TOKENSID')[1].split(';')[0];
+     开始();
 }else{
     var token=COOKIE;
+     开始();
 }
 
+}else{
+console.log("have no cookie");
 }
 
 
 
-if(storage.get("[任务]社区视频") == "true"){
-    开始();
-}
+//if(storage.get("[任务]社区视频") == "true"){
+ //   开始();
+//}
+
+
+
 function 开始(){
     videotask();
 }
@@ -31,12 +41,15 @@ function videotask() {
     
     var time = new Date().getTime();
 
-    report("日志","--------OPPO社区视频任务--------");
+    console.log("--------OPPO社区视频任务--------");
 
     for (var v = 0; v < 10; v++) {
-        var s = random(1500, 2000);
-        var q = random(10, 99);
-        var f = Number(s) + Number(q);
+        
+        //var s = random(1500, 2000);
+        //var q = random(10, 99);
+       // var f = Number(s) + Number(q);
+        
+        sleep(1500);
 
         var url = "https://i-api.oppo.cn/java/task/api/browse/browseFinish";
         ret = http.post(url, {
@@ -55,9 +68,9 @@ function videotask() {
             }
         }).body.json();
         if (ret['code'] == 200) {
-            report("日志","观看视频中");
+            console.log("观看视频中");
         } else {
-            report("日志",ret['msg']);
+           console.log(ret['msg']);
         }
         sleep(2000);
     }
@@ -87,10 +100,10 @@ function videotask() {
 
     }).body.json();
     if (ret['code'] == 200) {
-        report("日志","观看任务完成");
+       console.log("观看任务完成");
         sleep(3000);
     } else {
-        report("日志","异常操作");
+        console.log("异常操作");
     }
 
 }
@@ -99,7 +112,9 @@ function videotask() {
 
 
 
+/*注释
 
+report("日志",   改为   console.log(
 
 function report(X, Y) {
     Y = Y || false;
@@ -111,7 +126,7 @@ function report(X, Y) {
 mainEngine.emit("control",index);
 
 
-
+*/
 
 
 

@@ -1,30 +1,44 @@
-//var storage = storages.create("OPPO商城小铺");
+
 console.show();
-//var COOKIE = storage.get("ck");
+
 var COOKIE = "填入";//双引号改为单引号
-//var UA = storage.get("ua");
+
 var UA = "填入";
-//var mypassword = storage.get("password");
+
 http.__okhttp__.setTimeout(10000);
-//if(storage.get("ck")!=null){
-if(COOKIE!=""){
+
+
+
+
+
 if(COOKIE.indexOf('TOKENSID')!=-1){
     var token=";token"+COOKIE.split('TOKENSID')[1].split(';')[0];
+    //感谢支持
+auto.waitFor()
+app.startActivity({
+                    action: "VIEW",
+                    packageName: "com.oppo.store",
+                    className: "com.oppo.store.deeplink.DeepLinkInterpreterActivity",
+                    data:"https://store.oppo.com/cn/m/product/index?skuId=20305&utm_medium=ruanjianshangdian&utm_source=share_oppo_appstore&referer=MmZZSlI0SmcrU1Foa2hscGF4UTFGdz09&utm_campaign=sxdaohang",
+                });
+sleep(1500);
+
      开始();
 }else{
     var token=COOKIE;
+    //感谢支持
+auto.waitFor()
+app.startActivity({
+                    action: "VIEW",
+                    packageName: "com.oppo.store",
+                    className: "com.oppo.store.deeplink.DeepLinkInterpreterActivity",
+                    data:"https://store.oppo.com/cn/m/product/index?skuId=20305&utm_medium=ruanjianshangdian&utm_source=share_oppo_appstore&referer=MmZZSlI0SmcrU1Foa2hscGF4UTFGdz09&utm_campaign=sxdaohang",
+                });
+sleep(1500);
+
      开始();
 }
 
-}else{
-console.log("have no cookie");
-}
-
-
-
-//if(storage.get("[任务]社区视频") == "true"){
- //   开始();
-//}
 
 
 
@@ -44,11 +58,7 @@ function videotask() {
     console.log("--------OPPO社区视频任务--------");
 
     for (var v = 0; v < 10; v++) {
-        
-        //var s = random(1500, 2000);
-        //var q = random(10, 99);
-       // var f = Number(s) + Number(q);
-        
+ 
         sleep(1500);
 
         var url = "https://i-api.oppo.cn/java/task/api/browse/browseFinish";
@@ -107,28 +117,6 @@ function videotask() {
     }
 
 }
-
-
-
-
-
-/*注释
-
-report("日志",   改为   console.log(
-
-function report(X, Y) {
-    Y = Y || false;
-    events.broadcast.emit("日志", {
-        name: X,
-        data: Y
-    });
-}
-mainEngine.emit("control",index);
-
-
-*/
-
-
 
 
 

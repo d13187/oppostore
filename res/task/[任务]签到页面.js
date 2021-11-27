@@ -1,19 +1,12 @@
-var storage = storages.create("OPPO商城小铺");
 
 
-var UA = storage.get("ua");
-var mypassword = storage.get("password");
-http.__okhttp__.setTimeout(10000);
 
-if(storage.get("ck")!=null){
-if(storage.get("ck").indexOf('Op_lpvt_f18367c55fd7569d9000cd9986846577=')!=-1&&storage.get("ck").indexOf('Op_lvt_f18367c55fd7569d9000cd9986846577=')!=-1){
-var time1=storage.get("ck").split("Op_lpvt_f18367c55fd7569d9000cd9986846577=")[1].split(';')[0];
-var time2=storage.get("ck").split("Op_lvt_f18367c55fd7569d9000cd9986846577=")[1].split(';')[0];
-var COOKIE=storage.get("ck").replace(time1,Math.round(new Date().getTime()/1000)).replace(time2,Math.round(new Date().getTime()/1000-10000)+','+Math.round(new Date().getTime()/1000));
-}else{
-var COOKIE=storage.get("ck");
-}
-}
+
+var UA = 
+
+
+
+var COOKIE=
 
 
 var headers= {
@@ -47,13 +40,23 @@ var header={
         
     };
 
-//log(storage.get("[任务]签到页面"))
 
-if(storage.get("[任务]签到页面") == "true"){
-    report("日志", "--------" + "签到页面" + "--------");
 
-    HeyTaptask();
-}
+//看这里
+//批量修改  report("日志", 改为  console.log(
+//感谢支持
+auto.waitFor()
+app.startActivity({
+                    action: "VIEW",
+                    packageName: "com.oppo.store",
+                    className: "com.oppo.store.deeplink.DeepLinkInterpreterActivity",
+                    data:"https://store.oppo.com/cn/m/product/index?skuId=20305&utm_medium=ruanjianshangdian&utm_source=share_oppo_appstore&referer=MmZZSlI0SmcrU1Foa2hscGF4UTFGdz09&utm_campaign=sxdaohang",
+                });
+sleep(1500);
+
+
+console.show();
+HeyTaptask();
 
 
 
@@ -343,13 +346,3 @@ function HeyTaptask() {
 }
 
 
-
-function report(X, Y) {
-    Y = Y || false;
-    events.broadcast.emit("日志", {
-        name: X,
-        data: Y
-    });
-}
-
-mainEngine.emit("control",index);

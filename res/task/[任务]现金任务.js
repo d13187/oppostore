@@ -2,19 +2,8 @@
 var storage = storages.create("OPPO商城小铺");
 
 
-var UA = storage.get("ua");
-var mypassword = storage.get("password");
-http.__okhttp__.setTimeout(10000);
-
-if(storage.get("ck")!=null){
-if(storage.get("ck").indexOf('Op_lpvt_f18367c55fd7569d9000cd9986846577=')!=-1&&storage.get("ck").indexOf('Op_lvt_f18367c55fd7569d9000cd9986846577=')!=-1){
-var time1=storage.get("ck").split("Op_lpvt_f18367c55fd7569d9000cd9986846577=")[1].split(';')[0];
-var time2=storage.get("ck").split("Op_lvt_f18367c55fd7569d9000cd9986846577=")[1].split(';')[0];
-var COOKIE=storage.get("ck").replace(time1,Math.round(new Date().getTime()/1000)).replace(time2,Math.round(new Date().getTime()/1000-10000)+','+Math.round(new Date().getTime()/1000));
-}else{
-var COOKIE=storage.get("ck");
-}
-}
+var UA =
+var COOKIE=
 
 
 var headers = {
@@ -35,12 +24,10 @@ var headers = {
 };
 
 
-
-if(storage.get("[任务]现金任务") == "true"){
-    report("日志", "--------" +"现金任务"+ "--------");
+console.show();
 
     开始();
-}
+
 
 function 开始(){
 main();
@@ -87,7 +74,7 @@ function main() {
             }
 
         }else if(ret['code']==1000001){
-        award();
+        award1();
         sleep(1500);
         main();
         }
@@ -110,7 +97,7 @@ function iiiida(n, m) {
         headers:headers,
     }).body.json();
     if (retnm['code'] == 200) {
-        report("日志","来自" + "[" + m + "]" + "的助力,获得:" + retnm['data']['amount']);
+      console.log("来自" + "[" + m + "]" + "的助力,获得:" + retnm['data']['amount']);
     }
 
 
@@ -128,7 +115,7 @@ function getcash(z) {
         headers:headers,
     }).body.json();
     if (mm['code'] == 200) {
-        report("日志","第" + z + "次领取现金:" + mm['data']['amount']);
+       console.log("第" + z + "次领取现金:" + mm['data']['amount']);
     }
 
 }
@@ -147,7 +134,7 @@ function get(id) {
         headers:headers,
     }).body.json();
     if (retg['code'] == 200) {
-        report("日志","[领取红包]:获得" + retg['data']['credits'] + "积分")
+       console.log("[领取红包]:获得" + retg['data']['credits'] + "积分")
     }
 }
 
@@ -172,16 +159,16 @@ function award(id) {
     }).body.json();
     sleep(1500);
     if (retaa['code'] == 200) {
-        report("日志","获得现金:" + retaa['data']['amount'])
+       console.log("获得现金:" + retaa['data']['amount'])
 
     } else {
-        report("日志","错误提示:" + retaa['errorMessage'])
+        console.log("错误提示:" + retaa['errorMessage'])
     }
 
 }
 
 
-function award() {
+function award1() {
 
 
     retaa = http.request("https://store.oppo.com/cn/oapi/omp-web/web/dailyCash/drawReward", {
@@ -192,7 +179,7 @@ function award() {
     }).body.json();
     sleep(1500);
     if (retaa['code'] == 200) {
-        report("日志","初始现金:" + retaa['data']['amount'])
+        console.log("初始现金:" + retaa['data']['amount'])
 
     }
 
@@ -208,12 +195,3 @@ function dailyCash(a) {
 }
 
 
-function report(X, Y) {
-    Y = Y || false;
-    events.broadcast.emit("日志", {
-        name: X,
-        data: Y
-    });
-}
-
-mainEngine.emit("control",index);

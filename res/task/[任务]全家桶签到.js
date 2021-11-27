@@ -1,10 +1,10 @@
 
-var storage = storages.create("OPPO商城小铺");
+//var storage = storages.create("OPPO商城小铺");
 
-if(storage.get("[任务]全家桶签到") == "true"){
+//if(storage.get("[任务]全家桶签到") == "true"){
    auto.waitFor();
     开始();
-}
+//}
 
 
 

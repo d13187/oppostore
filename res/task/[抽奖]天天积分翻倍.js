@@ -1,19 +1,7 @@
-var storage = storages.create("OPPO商城小铺");
 
+var UA = 
 
-var UA = storage.get("ua");
-var mypassword = storage.get("password");
-http.__okhttp__.setTimeout(10000);
-
-if(storage.get("ck")!=null){
-if(storage.get("ck").indexOf('Op_lpvt_f18367c55fd7569d9000cd9986846577=')!=-1&&storage.get("ck").indexOf('Op_lvt_f18367c55fd7569d9000cd9986846577=')!=-1){
-var time1=storage.get("ck").split("Op_lpvt_f18367c55fd7569d9000cd9986846577=")[1].split(';')[0];
-var time2=storage.get("ck").split("Op_lvt_f18367c55fd7569d9000cd9986846577=")[1].split(';')[0];
-var COOKIE=storage.get("ck").replace(time1,Math.round(new Date().getTime()/1000)).replace(time2,Math.round(new Date().getTime()/1000-10000)+','+Math.round(new Date().getTime()/1000));
-}else{
-var COOKIE=storage.get("ck");
-}
-}
+var COOKIE=
 
 var headers= {
      "Host": "hd.oppo.com",
@@ -35,44 +23,6 @@ var headers= {
 
 
 
-if (storage.get("打开商城") == "[打开]" && storage.get("[抽奖]天天积分翻倍") != "true") {
-    
-    app.startActivity({
-        action: "VIEW",
-        packageName: "com.oppo.store",
-        className: "com.oppo.store.deeplink.DeepLinkInterpreterActivity",
-        data: "https://store.oppo.com/cn/m/product/index?skuId=3753&utm_medium=share_oppo_appstore&utm_source=share_oppo_appstore&referer=MmZZSlI0SmcrU1Foa2hscGF4UTFGdz09&utm_campaign=sxdaohang"
-    });
-    sleep(2000);
-    launch("com.httask.sign")
-}
-
-if (storage.get("打开商城") == "[打开]" && storage.get("[抽奖]天天积分翻倍") == "true") {
-    
-    app.startActivity({
-        action: "VIEW",
-        packageName: "com.oppo.store",
-        className: "com.oppo.store.deeplink.DeepLinkInterpreterActivity",
-        data: "https://store.oppo.com/cn/m/product/index?skuId=3753&utm_medium=share_oppo_appstore&utm_source=share_oppo_appstore&referer=MmZZSlI0SmcrU1Foa2hscGF4UTFGdz09&utm_campaign=sxdaohang"
-    });
-    sleep(2000);
-    launch("com.httask.sign");
-    开始();
-}
-
-if (storage.get("打开商城") != "[打开]" && storage.get("[抽奖]天天积分翻倍") == "true") {
-    
-    开始();
-}
-
-
-
-
-
-
-
-
-
 
 function 开始() {
 
@@ -81,6 +31,24 @@ function 开始() {
 
 }
 
+
+
+
+
+//感谢支持
+auto.waitFor()
+app.startActivity({
+                    action: "VIEW",
+                    packageName: "com.oppo.store",
+                    className: "com.oppo.store.deeplink.DeepLinkInterpreterActivity",
+                    data:"https://store.oppo.com/cn/m/product/index?skuId=20305&utm_medium=ruanjianshangdian&utm_source=share_oppo_appstore&referer=MmZZSlI0SmcrU1Foa2hscGF4UTFGdz09&utm_campaign=sxdaohang",
+                });
+sleep(1500);
+
+
+console.show();
+
+ 开始();
 
 
 
@@ -116,7 +84,7 @@ function radomsleep() {
 
 function lottery(aid, lid, name, sku, spu) {
     if (aid != 815 && lid != 460) {
-        report("日志", "--------" + name + "抽奖--------");
+        console.log( "--------" + name + "抽奖--------");
 
         var i = 0;
         while (i < 10) {
@@ -143,9 +111,9 @@ function lottery(aid, lid, name, sku, spu) {
                 headers: headers,
             }).body.json();
             if (r['msg'] == "提交成功") {
-                report("日志", "抽奖结果：" + r['data']['goods_name'])
+               console.log( "抽奖结果：" + r['data']['goods_name'])
             } else {
-                report("日志", r['msg']);
+              console.log(r['msg']);
                 break;
             }
         }
@@ -176,11 +144,11 @@ function lottery(aid, lid, name, sku, spu) {
                 headers: headers,
             }).body.json();
             if (r['data']['goods_name'] == "") {
-                report("日志", "抽奖结果：" + r['data']['goods_name'])
+             console.log("抽奖结果：" + r['data']['goods_name'])
 
                 break;
             } else {
-                report("日志", "抽奖结果：" + r['data']['goods_name'])
+                console.log( "抽奖结果：" + r['data']['goods_name'])
 
             }
         }
@@ -191,12 +159,3 @@ function lottery(aid, lid, name, sku, spu) {
 
 
 }
-
-function report(X, Y) {
-    Y = Y || false;
-    events.broadcast.emit("日志", {
-        name: X,
-        data: Y
-    });
-}
-mainEngine.emit("control", index);

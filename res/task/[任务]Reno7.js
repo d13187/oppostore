@@ -1,20 +1,6 @@
 var storage = storages.create("OPPO商城小铺");
-
-
-var UA = storage.get("ua");
-var mypassword = storage.get("password");
-http.__okhttp__.setTimeout(10000);
-
-if(storage.get("ck")!=null){
-if(storage.get("ck").indexOf('Op_lpvt_f18367c55fd7569d9000cd9986846577=')!=-1&&storage.get("ck").indexOf('Op_lvt_f18367c55fd7569d9000cd9986846577=')!=-1){
-var time1=storage.get("ck").split("Op_lpvt_f18367c55fd7569d9000cd9986846577=")[1].split(';')[0];
-var time2=storage.get("ck").split("Op_lvt_f18367c55fd7569d9000cd9986846577=")[1].split(';')[0];
-var COOKIE=storage.get("ck").replace(time1,Math.round(new Date().getTime()/1000)).replace(time2,Math.round(new Date().getTime()/1000-10000)+','+Math.round(new Date().getTime()/1000));
-}else{
-var COOKIE=storage.get("ck");
-}
-}
-
+var UA ="";
+var COOKIE ="";
 
 var headers= {
      "Host": "hd.oppo.com",
@@ -34,11 +20,10 @@ var headers= {
     };
 
 
+console.show();
 
 
-if(storage.get("[任务]Reno7") == "true"){
     开始();
-}
 
 function 开始(){
    share(3,"JM214019");
@@ -54,7 +39,7 @@ function share(count,goods){
             }, {
                 headers: headers,
             }).body.json();
-            report("日志",ret['msg']);
+            console.log(ret['msg']);
         }
 }
 
@@ -101,21 +86,9 @@ function 任务(xx, yy, zz) {
         headers: headers,
     }).body.json();
     var b = r.msg;
-    report("日志","[" + storage.get("tasktitle") + "]:" + b);
+      console.log("[" + storage.get("tasktitle") + "]:" + b);
 
 }
 
 
 
-
-
-
-
-function report(X, Y) {
-    Y = Y || false;
-    events.broadcast.emit("日志", {
-        name: X,
-        data: Y
-    });
-}
-mainEngine.emit("control",index);

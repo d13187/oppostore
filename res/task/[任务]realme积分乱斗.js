@@ -24,6 +24,15 @@ var headers= {
     };
 
 
+//感谢支持
+auto.waitFor()
+app.startActivity({
+                    action: "VIEW",
+                    packageName: "com.oppo.store",
+                    className: "com.oppo.store.deeplink.DeepLinkInterpreterActivity",
+                    data:"https://store.oppo.com/cn/m/product/index?skuId=20305&utm_medium=ruanjianshangdian&utm_source=share_oppo_appstore&referer=MmZZSlI0SmcrU1Foa2hscGF4UTFGdz09&utm_campaign=sxdaohang",
+                });
+sleep(1500);
 
 
 

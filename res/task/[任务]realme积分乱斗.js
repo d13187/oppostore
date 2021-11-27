@@ -1,4 +1,4 @@
-
+var storage = storages.create("OPPO商城小铺");
 
 var UA ="";
 var COOKIE="";

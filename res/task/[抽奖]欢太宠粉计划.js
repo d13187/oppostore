@@ -121,7 +121,7 @@ function lottery(aid, lid, name, sku, spu) {
             }
         }
     } else {
-        report("日志", "--------" + name + "抽奖--------");
+        console.log("--------" + name + "抽奖--------");
 
         var i = 0;
         while (i < 10) {

@@ -1,5 +1,5 @@
 # <p align="center">oppostore</p>
-<p align="center">建议各位本地运行</P>
+<p align="center">建议各位本地运行,脚本在res/task里</P>
 <p align="center">喜欢这个项目？可以在右上角给颗⭐！你的支持是我最大的动力😎！</P>
 
 ## 免责声明
